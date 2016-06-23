@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://dimplejs.org/dist/dimple.v2.2.0.min.js"></script>
+  <style>
+      h1 {
+        text-align: center;
+      }
+    </style>
+</head>
+<h1>
+  Titanic: Chances of Survival by Sex, Age and Class
+</h1>
+<div id="chartContainer">
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://dimplejs.org/dist/dimple.v2.2.0.min.js"></script>
+  <script type="text/javascript">
+    var svg = dimple.newSvg("#chartContainer", 590, 400);
+    svg.append("text").attr("x", (svg[0][0].clientWidth / 2)).attr("y", 14).attr("text-anchor", "middle").style("font-size", "13px").style("font-weight", "bold").text("Survival rate by sex and age");
+    d3.csv("titanic_1.csv", function (data) {
+      filtered_data = data.filter(function(d) { return d.AgeGroup != "NA"; })
+      var myChart = new dimple.chart(svg, filtered_data);
+      myChart.setBounds(60, 30, 510, 330)
+      var myAxis = myChart.addCategoryAxis("x", ["AgeGroup", "Sex"]);
+      var myVerticalAxis = myChart.addMeasureAxis("y", "Survived");
+      myVerticalAxis.title = "Average Survival Rate";
+      myAxis.addOrderRule(["0-9", "10-19", "20-29", "30-39", "40-49", "50-59", "60-69", "70+"]);
+      var mySeries = myChart.addSeries("Sex", dimple.plot.bar);
+      mySeries.aggregate = dimple.aggregateMethod.avg;
+      myChart.addLegend(65, 10, 510, 20, "right");
+      myChart.draw();
+    });
+
+    var svg1 = dimple.newSvg("#chartContainer", 590, 400);
+    svg1.append("text").attr("x", (svg1[0][0].clientWidth / 2)).attr("y", 14).attr("text-anchor", "middle").style("font-size", "13px").style("font-weight", "bold").text("Survival rate by passenger class and age");
+    d3.csv("titanic_1.csv", function (data) {
+      filtered_data = data.filter(function(d) { return d.AgeGroup != "NA"; })
+      var myChart1 = new dimple.chart(svg1, filtered_data);
+      myChart1.setBounds(60, 30, 510, 330)
+      var myAxis = myChart1.addCategoryAxis("x", ["AgeGroup", "Pclass"]);
+      var myVerticalAxis = myChart1.addMeasureAxis("y", "Survived");
+      myVerticalAxis.title = "Average Survival Rate";
+      myAxis.addOrderRule(["0-9", "10-19", "20-29", "30-39", "40-49", "50-59", "60-69", "70+"]);
+      var mySeries = myChart1.addSeries("Pclass", dimple.plot.bar);
+      mySeries.aggregate = dimple.aggregateMethod.avg;
+      myChart1.addLegend(65, 10, 510, 20, "right");
+      myChart1.draw();
+      });
+
+      var svg3 = dimple.newSvg("#chartContainer", 590, 400);
+    svg3.append("text").attr("x", (svg3[0][0].clientWidth / 2)).attr("y", 14).attr("text-anchor", "middle").style("font-size", "13px").style("font-weight", "bold").text("Total passenger number by sex and age");
+    d3.csv("titanic_1.csv", function (data) {
+      filtered_data = data.filter(function(d) { return d.AgeGroup != "NA"; })
+      var myChart3 = new dimple.chart(svg3, filtered_data);
+      myChart3.setBounds(60, 30, 510, 330)
+      var myAxis = myChart3.addCategoryAxis("x", ["AgeGroup", "Sex"]);
+      var myVerticalAxis = myChart3.addMeasureAxis("y", "Survived");
+      myVerticalAxis.title = "Total Passenger Number";
+      myAxis.addOrderRule(["0-9", "10-19", "20-29", "30-39", "40-49", "50-59", "60-69", "70+"]);
+      var mySeries = myChart3.addSeries("Sex", dimple.plot.bar);
+      mySeries.aggregate = dimple.aggregateMethod.count;
+      myChart3.addLegend(65, 10, 510, 20, "right");
+      myChart3.draw();
+      });
+
+      var svg2 = dimple.newSvg("#chartContainer", 590, 400);
+    svg2.append("text").attr("x", (svg2[0][0].clientWidth / 2)).attr("y", 14).attr("text-anchor", "middle").style("font-size", "13px").style("font-weight", "bold").text("Total passenger number by class and age");
+    d3.csv("titanic_1.csv", function (data) {
+      filtered_data = data.filter(function(d) { return d.AgeGroup != "NA"; })
+      var myChart2 = new dimple.chart(svg2, filtered_data);
+      myChart2.setBounds(60, 30, 510, 330)
+      var myAxis = myChart2.addCategoryAxis("x", ["AgeGroup", "Pclass"]);
+      var myVerticalAxis = myChart2.addMeasureAxis("y", "Survived");
+      myVerticalAxis.title = "Total Passenger Number";
+      myAxis.addOrderRule(["0-9", "10-19", "20-29", "30-39", "40-49", "50-59", "60-69", "70+"]);
+      var mySeries = myChart2.addSeries("Pclass", dimple.plot.bar);
+      mySeries.aggregate = dimple.aggregateMethod.count;
+      myChart2.addLegend(65, 10, 510, 20, "right");
+      myChart2.draw();
+      });
+
+  </script>
+</div>
+</html>
