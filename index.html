@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="http://d3js.org/d3.v3.min.js"></script>
-  <script src="http://dimplejs.org/dist/dimple.v2.2.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dimple/2.2.0/dimple.latest.min.js"></script>
   <style>
       h1 {
         text-align: center;
@@ -13,8 +13,6 @@
   Titanic: Chances of Survival by Sex, Age and Class
 </h1>
 <div id="chartContainer">
-  <script src="http://d3js.org/d3.v3.min.js"></script>
-  <script src="http://dimplejs.org/dist/dimple.v2.2.0.min.js"></script>
   <script type="text/javascript">
     var svg = dimple.newSvg("#chartContainer", 590, 400);
     svg.append("text").attr("x", (svg[0][0].clientWidth / 2)).attr("y", 14).attr("text-anchor", "middle").style("font-size", "13px").style("font-weight", "bold").text("Survival rate by sex and age");
@@ -47,8 +45,12 @@
       myChart1.addLegend(65, 10, 510, 20, "right");
       myChart1.draw();
       });
+  </script>
+</div>
 
-      var svg3 = dimple.newSvg("#chartContainer", 590, 400);
+<div id="chartContainer1">
+  <script type="text/javascript">
+    var svg3 = dimple.newSvg("#chartContainer1", 590, 400);
     svg3.append("text").attr("x", (svg3[0][0].clientWidth / 2)).attr("y", 14).attr("text-anchor", "middle").style("font-size", "13px").style("font-weight", "bold").text("Total passenger number by sex and age");
     d3.csv("titanic_1.csv", function (data) {
       filtered_data = data.filter(function(d) { return d.AgeGroup != "NA"; })
@@ -64,7 +66,7 @@
       myChart3.draw();
       });
 
-      var svg2 = dimple.newSvg("#chartContainer", 590, 400);
+      var svg2 = dimple.newSvg("#chartContainer1", 590, 400);
     svg2.append("text").attr("x", (svg2[0][0].clientWidth / 2)).attr("y", 14).attr("text-anchor", "middle").style("font-size", "13px").style("font-weight", "bold").text("Total passenger number by class and age");
     d3.csv("titanic_1.csv", function (data) {
       filtered_data = data.filter(function(d) { return d.AgeGroup != "NA"; })
@@ -79,7 +81,6 @@
       myChart2.addLegend(65, 10, 510, 20, "right");
       myChart2.draw();
       });
-
-  </script>
-</div>
+    </script>
+  </div>
 </html>
