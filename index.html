@@ -24,9 +24,13 @@
       var myVerticalAxis = myChart.addMeasureAxis("y", "Survived");
       myVerticalAxis.title = "Average Survival Rate";
       myAxis.addOrderRule(["0-9", "10-19", "20-29", "30-39", "40-49", "50-59", "60-69", "70+"]);
+      myAxis.addGroupOrderRule(["female","male"]);
       var mySeries = myChart.addSeries("Sex", dimple.plot.bar);
+      mySeries.addOrderRule(["male", "female"]);
       mySeries.aggregate = dimple.aggregateMethod.avg;
       myChart.addLegend(65, 10, 510, 20, "right");
+      myChart.assignColor("female", "rgb(128, 177, 211)", "rgb(107, 148, 176)", 0.8);
+      myChart.assignColor("male","rgb(251, 128, 114)","rgb(210, 107, 95)", 0.8);
       myChart.draw();
     });
 
@@ -40,9 +44,14 @@
       var myVerticalAxis = myChart1.addMeasureAxis("y", "Survived");
       myVerticalAxis.title = "Average Survival Rate";
       myAxis.addOrderRule(["0-9", "10-19", "20-29", "30-39", "40-49", "50-59", "60-69", "70+"]);
+      myAxis.addGroupOrderRule(["1", "2", "3"]);
       var mySeries = myChart1.addSeries("Pclass", dimple.plot.bar);
       mySeries.aggregate = dimple.aggregateMethod.avg;
+      mySeries.addOrderRule([3,2,1])
       myChart1.addLegend(65, 10, 510, 20, "right");
+      myChart1.assignColor("1", "rgb(128, 177, 211)", "rgb(107, 148, 176)", 0.8);
+      myChart1.assignColor("3","rgb(251, 128, 114)","rgb(210, 107, 95)", 0.8);
+      myChart1.assignColor("2", "rgb(253, 180, 98)","rgb(211, 150, 81)", 0.8);
       myChart1.draw();
       });
   </script>
@@ -57,12 +66,16 @@
       var myChart3 = new dimple.chart(svg3, filtered_data);
       myChart3.setBounds(60, 30, 510, 330)
       var myAxis = myChart3.addCategoryAxis("x", ["AgeGroup", "Sex"]);
-      var myVerticalAxis = myChart3.addMeasureAxis("y", "Survived");
+      var myVerticalAxis = myChart3.addMeasureAxis("y", "Total");
       myVerticalAxis.title = "Total Passenger Number";
       myAxis.addOrderRule(["0-9", "10-19", "20-29", "30-39", "40-49", "50-59", "60-69", "70+"]);
+      myAxis.addGroupOrderRule(["female","male"]);
       var mySeries = myChart3.addSeries("Sex", dimple.plot.bar);
       mySeries.aggregate = dimple.aggregateMethod.count;
       myChart3.addLegend(65, 10, 510, 20, "right");
+      mySeries.addOrderRule(["male", "female"]);
+      myChart3.assignColor("female", "rgb(128, 177, 211)", "rgb(107, 148, 176)", 0.8);
+      myChart3.assignColor("male","rgb(251, 128, 114)","rgb(210, 107, 95)", 0.8);
       myChart3.draw();
       });
 
@@ -73,12 +86,17 @@
       var myChart2 = new dimple.chart(svg2, filtered_data);
       myChart2.setBounds(60, 30, 510, 330)
       var myAxis = myChart2.addCategoryAxis("x", ["AgeGroup", "Pclass"]);
-      var myVerticalAxis = myChart2.addMeasureAxis("y", "Survived");
+      var myVerticalAxis = myChart2.addMeasureAxis("y", "Total");
       myVerticalAxis.title = "Total Passenger Number";
       myAxis.addOrderRule(["0-9", "10-19", "20-29", "30-39", "40-49", "50-59", "60-69", "70+"]);
       var mySeries = myChart2.addSeries("Pclass", dimple.plot.bar);
+      myAxis.addGroupOrderRule(["1", "2", "3"]);
+      mySeries.addOrderRule([3,2,1])
       mySeries.aggregate = dimple.aggregateMethod.count;
       myChart2.addLegend(65, 10, 510, 20, "right");
+      myChart2.assignColor("1", "rgb(128, 177, 211)", "rgb(107, 148, 176)", 0.8);
+      myChart2.assignColor("3","rgb(251, 128, 114)","rgb(210, 107, 95)", 0.8);
+      myChart2.assignColor("2", "rgb(253, 180, 98)","rgb(211, 150, 81)", 0.8);
       myChart2.draw();
       });
     </script>
