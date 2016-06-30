@@ -7,12 +7,43 @@
       h1 {
         text-align: center;
       }
+      .part {
+      display: -webkit-flex;
+      display: flex;
+      }
+      div.description
+      {
+        text-align: justify;
+        padding: 30px;
+        /*margin-left: 200px;
+        margin-right: 200px;*/
+        max-width: 700px;
+        margin: auto;
+        color: black;
+        background-color:oldlace;
+        margin-right: 200px;
+        border: 1px solid black;
+        /*border-top: 10px solid white;
+        border-bottom: 10px solid white;
+        border-left: 100px solid white;
+        border-right: 100px solid white;*/
+      }
+      div.part
+      {
+        background-color:aliceblue;
+      }
+      body {
+        font-family: 'Lato', sans-serif;
+        color: #747704;
+        font-weight: 300;
+      }
     </style>
 </head>
 <h1>
   Titanic: Chances of Survival by Sex, Age and Class
 </h1>
-<div id="chartContainer">
+<div class="part">
+  <div id="chartContainer">
   <script type="text/javascript">
     var svg = dimple.newSvg("#chartContainer", 590, 400);
     svg.append("text").attr("x", (svg[0][0].clientWidth / 2)).attr("y", 14).attr("text-anchor", "middle").style("font-size", "13px").style("font-weight", "bold").text("Survival rate by sex and age");
@@ -34,7 +65,30 @@
       myChart.draw();
     });
 
-    var svg1 = dimple.newSvg("#chartContainer", 590, 400);
+    var svg3 = dimple.newSvg("#chartContainer", 590, 400);
+    svg3.append("text").attr("x", (svg3[0][0].clientWidth / 2)).attr("y", 14).attr("text-anchor", "middle").style("font-size", "13px").style("font-weight", "bold").text("Total passenger number by sex and age");
+    d3.csv("titanic_1.csv", function (data) {
+      filtered_data = data.filter(function(d) { return d.AgeGroup != "NA"; })
+      var myChart3 = new dimple.chart(svg3, filtered_data);
+      myChart3.setBounds(60, 30, 510, 330)
+      var myAxis = myChart3.addCategoryAxis("x", ["AgeGroup", "Sex"]);
+      var myVerticalAxis = myChart3.addMeasureAxis("y", "Total");
+      myVerticalAxis.title = "Total Passenger Number";
+      myAxis.addOrderRule(["0-9", "10-19", "20-29", "30-39", "40-49", "50-59", "60-69", "70+"]);
+      myAxis.addGroupOrderRule(["female","male"]);
+      var mySeries = myChart3.addSeries("Sex", dimple.plot.bar);
+      mySeries.aggregate = dimple.aggregateMethod.count;
+      myChart3.addLegend(65, 10, 510, 20, "right");
+      mySeries.addOrderRule(["male", "female"]);
+      myChart3.assignColor("female", "rgb(128, 177, 211)", "rgb(107, 148, 176)", 0.8);
+      myChart3.assignColor("male","rgb(251, 128, 114)","rgb(210, 107, 95)", 0.8);
+      myChart3.draw();
+      });
+  </script>
+</div>
+<div id="chartContainer1">
+  <script type="text/javascript">
+      var svg1 = dimple.newSvg("#chartContainer1", 590, 400);
     svg1.append("text").attr("x", (svg1[0][0].clientWidth / 2)).attr("y", 14).attr("text-anchor", "middle").style("font-size", "13px").style("font-weight", "bold").text("Survival rate by passenger class and age");
     d3.csv("titanic_1.csv", function (data) {
       filtered_data = data.filter(function(d) { return d.AgeGroup != "NA"; })
@@ -53,30 +107,6 @@
       myChart1.assignColor("3","rgb(251, 128, 114)","rgb(210, 107, 95)", 0.8);
       myChart1.assignColor("2", "rgb(253, 180, 98)","rgb(211, 150, 81)", 0.8);
       myChart1.draw();
-      });
-  </script>
-</div>
-
-<div id="chartContainer1">
-  <script type="text/javascript">
-    var svg3 = dimple.newSvg("#chartContainer1", 590, 400);
-    svg3.append("text").attr("x", (svg3[0][0].clientWidth / 2)).attr("y", 14).attr("text-anchor", "middle").style("font-size", "13px").style("font-weight", "bold").text("Total passenger number by sex and age");
-    d3.csv("titanic_1.csv", function (data) {
-      filtered_data = data.filter(function(d) { return d.AgeGroup != "NA"; })
-      var myChart3 = new dimple.chart(svg3, filtered_data);
-      myChart3.setBounds(60, 30, 510, 330)
-      var myAxis = myChart3.addCategoryAxis("x", ["AgeGroup", "Sex"]);
-      var myVerticalAxis = myChart3.addMeasureAxis("y", "Total");
-      myVerticalAxis.title = "Total Passenger Number";
-      myAxis.addOrderRule(["0-9", "10-19", "20-29", "30-39", "40-49", "50-59", "60-69", "70+"]);
-      myAxis.addGroupOrderRule(["female","male"]);
-      var mySeries = myChart3.addSeries("Sex", dimple.plot.bar);
-      mySeries.aggregate = dimple.aggregateMethod.count;
-      myChart3.addLegend(65, 10, 510, 20, "right");
-      mySeries.addOrderRule(["male", "female"]);
-      myChart3.assignColor("female", "rgb(128, 177, 211)", "rgb(107, 148, 176)", 0.8);
-      myChart3.assignColor("male","rgb(251, 128, 114)","rgb(210, 107, 95)", 0.8);
-      myChart3.draw();
       });
 
       var svg2 = dimple.newSvg("#chartContainer1", 590, 400);
@@ -101,4 +131,17 @@
       });
     </script>
   </div>
+  <div class="description">
+    <p>
+      RMS Titanic was a British passenger liner that sank in the North Atlantic Ocean in the early morning of 15 April 1912, after colliding with an iceberg during her maiden voyage from Southampton to New York City. Of the 2,224 passengers and crew aboard, more than 1,500 died in the sinking, making it one of the deadliest commercial peacetime maritime disasters in modern history. The largest ship afloat at the time it entered service, the RMS Titanic was the second of three Olympic class ocean liners operated by the White Star Line, and was built by the Harland and Wolff shipyard in Belfast. Thomas Andrews, her architect, died in the disaster.
+    </p>
+    <p>
+    Under the command of Edward Smith, the ship carried some of the wealthiest people in the world, as well as hundreds of emigrants from Great Britain and Ireland, Scandinavia and elsewhere throughout Europe seeking a new life in North America. A high-power radiotelegraph transmitter was available for sending passenger "marconigrams" and for the ship's operational use. Although Titanic had advanced safety features such as watertight compartments and remotely activated watertight doors, there were not enough lifeboats to accommodate all of those aboard due to outdated maritime safety regulations. Titanic only carried enough lifeboats for 1,178 people - slightly more than half of the number on board, and one third of her total capacity.
+    </p>
+    <p>
+    Fewer than a third of those aboard Titanic survived the disaster. Some survivors died shortly afterwards; injuries and the effects of exposure caused the deaths of several of those brought aboard Carpathia. The figures show stark differences in the survival rates of the different classes aboard Titanic. Although only 3% of first-class women were lost, 54% of those in third class died. Similarly, five of six first-class and all second-class children survived, but 52 of the 79 in third class perished. The differences by gender were even bigger: nearly all female crew members, first and second class passengers were saved. Men from the First Class died at a higher rate than women from the Third Class.
+    <a href="https://en.wikipedia.org/wiki/RMS_Titanic#Survivors_and_victims">Wikipedia</a>
+    </p>
+  </div>
+</div>
 </html>
