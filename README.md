@@ -14,6 +14,8 @@ Bar chart was chosen to represent survival rates of groups of people because it 
 
 To address questions raised in feedback_1 a new column named "total" was added in the data table. Now the tooltip displayes "Total: number" and not "Survived: number" as before when hovering over bars in a chart "Total passenger number by sex and age". It shows counts for total amount of people in each category same as before, but the name of the category was corrected.
 
+In addition, a texbox with the description of the titanic fron Wikipedia was added with the link to site to accomodate another suggestion from feedback-1.
+
 Feedback
 
 Feedback_1. I noticed that females survive better. And First class passenger survive better, except for the children, where the second class children survived more.
