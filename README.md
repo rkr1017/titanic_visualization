@@ -16,6 +16,8 @@ To address questions raised in feedback_1 a new column named "total" was added i
 
 In addition, a texbox with the description of the titanic fron Wikipedia was added with the link to site to accomodate another suggestion from feedback-1.
 
+Feedback_2 suggested at the end to make much simpler graphs, just one for sex age and class. While it would look simpler it would convey less information in each chart, so this suggestion was not acted upon.
+
 Feedback
 
 Feedback_1. I noticed that females survive better. And First class passenger survive better, except for the children, where the second class children survived more.
@@ -25,6 +27,13 @@ It is not clear to me what the "total passenger number" means. At first I though
 The main takeaway is that gender and passenger class were determinant to survival. Maybe you could find some reference to link where it explains the reasons for this.
 
 Feedback_2.
+
+I immediately noticed the much higher survival rates for women compared with men. I also saw how the third class had much lower survival rates.
+I don't really have questions about the data, I've seen it before.
+I notice that the upper classes are older than the 3rd class, which is predominately very young.
+I think the main takeaway is that women and the upper classes faired much better than men and the lower class.
+No, the graphic is very clear and easy to understand. 
+A suggestion that I have would be to create bar graphs for age, sex, and class, instead of using age with the other two variables subsetted. This would make your overall message more clear.
 
 3.
 
