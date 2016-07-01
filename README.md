@@ -40,3 +40,5 @@ A suggestion that I have would be to create bar graphs for age, sex, and class, 
 Resources
 
 https://www.kaggle.com/c/titanic
+https://en.wikipedia.org/wiki/RMS_Titanic#Survivors_and_victims
+
