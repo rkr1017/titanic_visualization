@@ -63,6 +63,7 @@
       myChart.assignColor("female", "rgb(128, 177, 211)", "rgb(107, 148, 176)", 0.8);
       myChart.assignColor("male","rgb(251, 128, 114)","rgb(210, 107, 95)", 0.8);
       myChart.draw();
+      myVerticalAxis.tickFormat = ",.2f";
     });
 
     var svg3 = dimple.newSvg("#chartContainer", 590, 400);
@@ -107,6 +108,7 @@
       myChart1.assignColor("3","rgb(251, 128, 114)","rgb(210, 107, 95)", 0.8);
       myChart1.assignColor("2", "rgb(253, 180, 98)","rgb(211, 150, 81)", 0.8);
       myChart1.draw();
+      myVerticalAxis.tickFormat = ",.2f";
       });
 
       var svg2 = dimple.newSvg("#chartContainer1", 590, 400);
