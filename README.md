@@ -18,6 +18,8 @@ In addition, a texbox with the description of the titanic fron Wikipedia was add
 
 Feedback_2 suggested at the end to make much simpler graphs, just one for sex age and class. While it would look simpler it would convey less information in each chart, so this suggestion was not acted upon.
 
+To address suggestion in feedback_3 tooltips were modified to display two decimal points in values of survival rates.
+
 Feedback
 
 Feedback_1. I noticed that females survive better. And First class passenger survive better, except for the children, where the second class children survived more.
@@ -35,7 +37,33 @@ I think the main takeaway is that women and the upper classes faired much better
 No, the graphic is very clear and easy to understand. 
 A suggestion that I have would be to create bar graphs for age, sex, and class, instead of using age with the other two variables subsetted. This would make your overall message more clear.
 
-3.
+Feedback_3.
+
+I noticed that the percent of women who survived was 
+significantly higher than the percent of men, even when accounting 
+for the much greater number of men than women on board. The number 
+of children under 10 who survived was higher than almost any other 
+demographic (except women 60-69, of whom there were only 4). In 
+general, the visualization was very clear and easy to read. I 
+liked that the graphs for survivors and total number of passengers 
+are aligned vertically. This makes it very easy to compare between 
+them. I also liked that when I hover my mouse over a bar, a line 
+appears that shows me exactly where on the y-axis the bar ends. 
+This makes the relationship between the different bars very clear 
+(how far apart of the y-axis the different bars fall). For 
+example, this helped me to realize that the percent of survivors 
+age 60-69 in second and third class was the same as the percent of 
+survivors age 50-59 in second class.
+The main takeaway of this visualization is that more women and 
+children than men survived. Also, more of the upper classes 
+survived. Howevever at least half the people on board did not 
+survive. 
+The graphic was clear and easy to read. I noticed that when I 
+hover my mouse onver a bar the statistics that appear are rounded 
+up to the nearest tenth. It would be better if they showed the 
+true, non-rounded percent. Overall, I thought it was a very 
+interesting graphic.
+
 
 Resources
 
