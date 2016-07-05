@@ -10,7 +10,15 @@ The goal this visualization is to illustrate the differences between chances of 
 
 Design
 
-Bar chart was chosen to represent survival rates of groups of people because it is very good in displaing relative numbers/proportions of multiple categories. Color was used as a visual encoding to such categories as passenger sex and class. Ages were binned in 10-year intervals. Two charts in the upper row show average survival rates for different age groups and classes. Below in a secod row charts show total number of passengers in each category for comparison. Sometimes very few passengers are in the given category which helps to interpret the outliers in the survival rates charts.
+Bar chart was chosen to represent survival rates of groups of people because it is very good in displaing relative numbers/proportions of multiple categories. Color was used as a visual encoding to such categories as passenger sex and class. Ages were binned in 10-year intervals. The decision to make age into a categorical variable was made based on available data that children were more likely to survive than older people. 
+
+Initial design: 
+
+Two charts in the upper row show average survival rates for different age groups and classes. Below in a secod row charts show total number of passengers in each category for comparison. Sometimes very few passengers are in the given category which helps to interpret the outliers in the survival rates charts.
+
+Change in design to address reviewer comments:
+
+Lower charts were representing total passenger numbers were dropped as providing too much details there were not appropriate for an explanatory visualization. Passenger class chart was re-formatted. Survival rates were plotted against passenger class series stratified by age groups. This should better indicate trend in upper class and younger age survival.
 
 To address questions raised in feedback_1 a new column named "total" was added in the data table. Now the tooltip displayes "Total: number" and not "Survived: number" as before when hovering over bars in a chart "Total passenger number by sex and age". It shows counts for total amount of people in each category same as before, but the name of the category was corrected.
 
@@ -19,6 +27,7 @@ In addition, a texbox with the description of the titanic fron Wikipedia was add
 Feedback_2 suggested at the end to make much simpler graphs, just one for sex age and class. While it would look simpler it would convey less information in each chart, so this suggestion was not acted upon.
 
 To address suggestion in feedback_3 tooltips were modified to display two decimal points in values of survival rates.
+
 
 Feedback
 
