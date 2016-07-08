@@ -1,12 +1,14 @@
 # titanic_visualization
 Udacity d3 dimple.js visualization project
 
+link to GitHub repository: https://github.com/rkr1017/titanic_visualization.git
+
 Summary
 
 This is an exerpt from Kaggle website.
 The sinking of the RMS Titanic is one of the most infamous shipwrecks in history. 
 One of the reasons that the shipwreck led to such loss of life was that there were not enough lifeboats for the passengers and crew. Although there was some element of luck involved in surviving the sinking, some groups of people were more likely to survive than others, such as women, children, and the upper-class.
-The goal this visualization is to illustrate the differences between chances of survival for different groups of people based on sex, age and class.
+The goal this visualization is to show that the chances of survival for children, women and upper class passengers were higher than for other groups of people.
 
 Design
 
@@ -19,6 +21,10 @@ Two charts in the upper row show average survival rates for different age groups
 Change in design to address reviewer comments:
 
 Lower charts were representing total passenger numbers were dropped as providing too much details there were not appropriate for an explanatory visualization. Passenger class chart was re-formatted. Survival rates were plotted against passenger class series stratified by age groups. This should better indicate trend in upper class and younger age survival.
+
+Change in design to address additional reviewer comments:
+
+Sequential orange palette was used for age groups in class/age chart to make them easily distinguishable. Blue background in chart helps to increase visibility of orange bars at the end of the spectrum. Summary was place at the top of the page. The title was changed to make it more descriptive.
 
 To address questions raised in feedback_1 a new column named "total" was added in the data table. Now the tooltip displayes "Total: number" and not "Survived: number" as before when hovering over bars in a chart "Total passenger number by sex and age". It shows counts for total amount of people in each category same as before, but the name of the category was corrected.
 
