@@ -2,6 +2,7 @@
 <html>
 <head>
   <link rel="stylesheet"  src="//normalize-css.googlecode.com/svn/trunk/normalize.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dimple/2.2.0/dimple.latest.min.js"></script>
   <style>
@@ -19,18 +20,24 @@
       }
       div.description{
         text-align: justify;
-        padding: 30px;
+        padding: 10px;
         max-width: 1775px;
         margin: auto;
         color: black;
-        background-color:oldlace;
+        background-color:#f0f0f0;
       }
       div.spacer{
         padding: 30px;
       }
-      div.part
+      div#chartContainer1
       {
-        background-color:aliceblue;
+        background-color: #c6dbef;
+        margin-left: 70px;
+      }
+      div#chartContainer
+      {
+        background-color: oldlace;
+        margin-left: 70px;
       }
       body {
         font-family: 'Lato', sans-serif;
@@ -40,19 +47,30 @@
     </style>
 </head>
 <h1>
-  Titanic: Passenger Survival
+  Titanic: Better Chances of Survival for Children, Women and Upper Class
 </h1>
+<!-- SECTION 1 - summary text -->
+<div class="description">
+    <h4>
+      One of the reasons that the shipwreck led to such loss of life was that there were not enough lifeboats for the passengers and crew. Although there was some element of luck involved in surviving the sinking, some groups of people were more likely to survive than others, such as women, children, and the upper-class.
+    <a href="https://www.kaggle.com/c/titanic">Kaggle</a>
+    </h4>
+  </div>
+<div class="spacer">
+</div>
 <div class="part">
-  <!-- SECTION 1 - graph displaying age and sex -->
+  <!-- SECTION 2 - graph displaying age and sex -->
   <div id="chartContainer">
   <script type="text/javascript">
     var svg = dimple.newSvg("#chartContainer", 590, 400);
+
     svg.append("text")
       .attr("x", (svg[0][0].clientWidth / 2))
       .attr("y", 14)
       .attr("text-anchor", "middle")
       .style("font-size", "13px")
       .style("font-weight", "bold").text("Survival rate by sex and age");
+
     d3.csv("titanic_1.csv", function (data) {
       filtered_data = data.filter(function(d) { return d.AgeGroup != "NA"; })
       var myChart = new dimple.chart(svg, filtered_data);
@@ -60,58 +78,72 @@
       var myAxis = myChart.addCategoryAxis("x", ["AgeGroup", "Sex"]);
       var myVerticalAxis = myChart.addMeasureAxis("y", "Survived");
       myVerticalAxis.title = "Average Survival Rate";
+
       myAxis.addOrderRule(["0-9", "10-19", "20-29", "30-39", "40-49", "50-59", "60-69", "70+"]);
+
       myAxis.addGroupOrderRule(["female","male"]);
       myVerticalAxis.tickFormat = "%";
       var mySeries = myChart.addSeries("Sex", dimple.plot.bar);
       mySeries.addOrderRule(["male", "female"]);
       mySeries.aggregate = dimple.aggregateMethod.avg;
-      myChart.addLegend(65, 10, 510, 20, "right");
+      var myLegend = myChart.addLegend(65, 10, 510, 20, "right");
+
       myChart.assignColor("female", "rgb(128, 177, 211)", "rgb(107, 148, 176)", 0.8);
+
       myChart.assignColor("male","rgb(251, 128, 114)","rgb(210, 107, 95)", 0.8);
+
       myChart.draw();
+      var myShapes = myLegend.shapes;
+      var selection = myShapes.selectAll("text");
     });
   </script>
 </div>
-<!-- SECTION 2 - graph displaying pclass and age -->
+<!-- SECTION 3 - graph displaying pclass and age -->
 <div id="chartContainer1">
   <script type="text/javascript">
     var svg1 = dimple.newSvg("#chartContainer1", 590, 400);
+
     svg1.append("text")
       .attr("x", (svg1[0][0].clientWidth / 2))
       .attr("y", 14)
       .attr("text-anchor", "middle")
       .style("font-size", "13px")
       .style("font-weight", "bold").text("Survival rate by passenger class and age");
+
     d3.csv("titanic_1.csv", function (data) {
       filtered_data = data.filter(function(d) { return d.AgeGroup != "NA"; })
       var myChart1 = new dimple.chart(svg1, filtered_data);
-      myChart1.setBounds(60, 30, 510, 330)
+      myChart1.setBounds(60, 30, 450, 330)
       var myAxis = myChart1.addCategoryAxis("x", ["Pclass","AgeGroup" ]);
       var myVerticalAxis = myChart1.addMeasureAxis("y", "Survived");
       myVerticalAxis.tickFormat = "%";
       myVerticalAxis.title = "Average Survival Rate";
+
       myAxis.addGroupOrderRule(["0-9", "10-19", "20-29", "30-39", "40-49", "50-59", "60-69", "70+"]);
+
       myAxis.addOrderRule(["1", "2", "3"]);
-      var mySeries = myChart1.addSeries("Pclass", dimple.plot.bar);
+
+      var mySeries = myChart1.addSeries("AgeGroup", dimple.plot.bar);
+
       mySeries.aggregate = dimple.aggregateMethod.avg;
       mySeries.addOrderRule([3,2,1]);
-      myChart1.addLegend(65, 10, 510, 20, "right");
-      myChart1.assignColor("1", "DarkMagenta", 0.8);
-      myChart1.assignColor("3","Fuchsia","rgb(210, 107, 95)", 0.8);
-      myChart1.assignColor("2", "Blue", 0.8);
+
+      mySeries.addOrderRule(["0-9", "10-19", "20-29", "30-39", "40-49", "50-59", "60-69", "70+"]);
+
+      var myLegend = myChart1.addLegend(530, 20, 100, 300, "left", mySeries);
+
+      myChart1.assignColor("0-9", "#8c2d04", 1);
+      myChart1.assignColor("10-19", "#d94801", 1);
+      myChart1.assignColor("20-29", "rgb(241,105,19)", 1);
+      myChart1.assignColor("30-39", "#fd8d3c", 1);
+      myChart1.assignColor("40-49", "#fdae6b", 1);
+      myChart1.assignColor("50-59", "#fdd0a2", 1);
+      myChart1.assignColor("60-69", "#fee6ce", 1);
+      myChart1.assignColor("70+", "#fff5eb", 1);
+
       myChart1.draw();
       });
     </script>
   </div>
 </div>
-<div class="spacer">
-</div>
-<!-- SECTION 3 - summary text -->
-<div class="description">
-    <p>
-      One of the reasons that the shipwreck led to such loss of life was that there were not enough lifeboats for the passengers and crew. Although there was some element of luck involved in surviving the sinking, some groups of people were more likely to survive than others, such as women, children, and the upper-class.
-    <a href="https://www.kaggle.com/c/titanic">Kaggle</a>
-    </p>
-  </div>
 </html>
